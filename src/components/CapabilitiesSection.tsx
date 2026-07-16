@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion, type Variants } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
 import { CAPABILITIES } from "@/lib/constants";
@@ -55,11 +56,12 @@ export default function CapabilitiesSection() {
                 whileHover="hover"
                 className="glass-card relative flex h-64 flex-col justify-between overflow-hidden rounded-lg p-10"
               >
-                <img
+                <Image
                   src={cap.image}
                   alt=""
-                  className="absolute inset-0 h-full w-full object-cover opacity-20"
-                  loading="lazy"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-cover opacity-20"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-midnight/80 via-midnight/30 to-transparent" />
 
