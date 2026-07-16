@@ -13,7 +13,7 @@ export default function Navbar() {
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         <Link
           href="/"
-          className="font-display text-xl font-bold tracking-[0.2em] uppercase text-white"
+          className="font-display text-xl font-bold tracking-[0.2em] uppercase text-gold"
         >
           Seftekra
         </Link>
