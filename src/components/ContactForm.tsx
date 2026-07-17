@@ -14,20 +14,12 @@ export default function ContactForm() {
     setStatus("loading");
 
     const form = e.currentTarget;
-    const formData = new FormData(form);
+    const data = new FormData(form);
 
     try {
       const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY ?? "",
-          subject: "New Project Submission — Seftekra",
-          from_name: formData.get("name"),
-          name: formData.get("name"),
-          email: formData.get("email"),
-          message: formData.get("message"),
-        }),
+        body: data,
       });
       if (res.ok) {
         form.reset();
@@ -108,6 +100,9 @@ export default function ContactForm() {
                 onSubmit={handleSubmit}
                 className="space-y-6 text-left"
               >
+                <input type="hidden" name="access_key" value={process.env.NEXT_PUBLIC_WEB3FORMS_KEY ?? ""} />
+                <input type="hidden" name="subject" value="New Project Submission — Seftekra" />
+
                 <div className="border-b border-white/20 pb-2">
                   <input
                     type="text"
