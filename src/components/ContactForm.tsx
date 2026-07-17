@@ -4,13 +4,29 @@ import { type FormEvent, useState } from "react";
 import { motion } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
 
+const WEB3FORMS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_KEY ?? "";
+
 export default function ContactForm() {
   const [sent, setSent] = useState(false);
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSent(true);
-    setTimeout(() => setSent(false), 3000);
+    const form = e.currentTarget;
+    const data = new FormData(form);
+
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: data,
+      });
+      if (res.ok) {
+        setSent(true);
+        form.reset();
+        setTimeout(() => setSent(false), 4000);
+      }
+    } catch {
+      // silently ignore network errors
+    }
   };
 
   return (
@@ -30,9 +46,21 @@ export default function ContactForm() {
 
         <ScrollReveal delay={0.2}>
           <form onSubmit={handleSubmit} className="space-y-6 text-left">
+            <input
+              type="hidden"
+              name="access_key"
+              value={WEB3FORMS_KEY}
+            />
+            <input
+              type="hidden"
+              name="subject"
+              value="New Project Submission — Seftekra"
+            />
+
             <div className="border-b border-white/20 pb-2">
               <input
                 type="text"
+                name="name"
                 required
                 placeholder="Your Name"
                 className="w-full bg-transparent text-sm font-light text-white placeholder:text-gray-600 focus:outline-none"
@@ -41,6 +69,7 @@ export default function ContactForm() {
             <div className="border-b border-white/20 pb-2">
               <input
                 type="email"
+                name="email"
                 required
                 placeholder="Email Address"
                 className="w-full bg-transparent text-sm font-light text-white placeholder:text-gray-600 focus:outline-none"
@@ -48,6 +77,7 @@ export default function ContactForm() {
             </div>
             <div className="border-b border-white/20 pb-2">
               <textarea
+                name="message"
                 required
                 placeholder="Project Details (Location, Size, Type)"
                 rows={2}
