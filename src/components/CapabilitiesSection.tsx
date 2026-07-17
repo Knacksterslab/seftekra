@@ -58,7 +58,7 @@ export default function CapabilitiesSection() {
               >
                 <Image
                   src={cap.image}
-                  alt=""
+                    alt={cap.title}
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover opacity-20"
