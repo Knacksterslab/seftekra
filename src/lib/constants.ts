@@ -1,6 +1,7 @@
 export const NAV_LINKS = [
-  { label: "Solutions", href: "/#solutions" },
-  { label: "Models", href: "/#models" },
+  { label: "Solutions", href: "/solutions" },
+  { label: "Financing", href: "/financing" },
+  { label: "Storage", href: "/storage" },
 ] as const;
 
 export const CAPABILITIES = [
@@ -63,6 +64,9 @@ export const STRATEGIES = [
 ] as const;
 
 export const FOOTER_LINKS = [
+  { label: "Solutions", href: "/solutions" },
+  { label: "Financing", href: "/financing" },
+  { label: "Storage", href: "/storage" },
   { label: "Privacy Policy", href: "/privacy" },
   { label: "Terms of Service", href: "/terms" },
 ] as const;

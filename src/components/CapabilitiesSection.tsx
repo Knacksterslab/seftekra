@@ -1,9 +1,11 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { motion, type Variants } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
 import { CAPABILITIES } from "@/lib/constants";
+import { SOLUTIONS } from "@/lib/solutions";
 
 const cardVariants: Variants = {
   rest: { y: 0, scale: 1 },
@@ -50,12 +52,16 @@ export default function CapabilitiesSection() {
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
           {CAPABILITIES.map((cap, i) => (
             <ScrollReveal key={cap.id} delay={i * 0.12}>
-              <motion.div
-                variants={cardVariants}
-                initial="rest"
-                whileHover="hover"
-                className="glass-card relative flex h-64 flex-col justify-between overflow-hidden rounded-lg p-10"
+              <Link
+                href={`/solutions/${SOLUTIONS[i].slug}`}
+                className="block"
               >
+                <motion.div
+                  variants={cardVariants}
+                  initial="rest"
+                  whileHover="hover"
+                  className="glass-card relative flex h-64 flex-col justify-between overflow-hidden rounded-lg p-10"
+                >
                 <Image
                   src={cap.image}
                     alt={cap.title}
@@ -76,7 +82,8 @@ export default function CapabilitiesSection() {
                 <div className="relative z-10 mt-6 animate-pulse-glow text-sm font-bold tracking-wider uppercase">
                   {cap.id} / {cap.label}
                 </div>
-              </motion.div>
+                </motion.div>
+              </Link>
             </ScrollReveal>
           ))}
         </div>

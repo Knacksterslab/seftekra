@@ -1,8 +1,10 @@
 "use client";
 
 import { motion, type Variants } from "framer-motion";
+import Link from "next/link";
 import ScrollReveal from "./ScrollReveal";
 import { STRATEGIES } from "@/lib/constants";
+import { FINANCING_MODELS } from "@/lib/financing";
 
 const cardVariants: Variants = {
   rest: { y: 0 },
@@ -35,12 +37,16 @@ export default function StrategySection() {
         <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
           {STRATEGIES.map((s, i) => (
             <ScrollReveal key={s.id} delay={i * 0.15}>
-              <motion.div
-                variants={cardVariants}
-                initial="rest"
-                whileHover="hover"
-                className="group relative flex min-h-[260px] flex-col justify-between overflow-hidden rounded-lg border border-white/10 bg-white/[0.03] p-10 backdrop-blur-[10px]"
+              <Link
+                href={`/financing/${FINANCING_MODELS[i].slug}`}
+                className="block"
               >
+                <motion.div
+                  variants={cardVariants}
+                  initial="rest"
+                  whileHover="hover"
+                  className="group relative flex min-h-[260px] flex-col justify-between overflow-hidden rounded-lg border border-white/10 bg-white/[0.03] p-10 backdrop-blur-[10px]"
+                >
                 <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-gold to-transparent opacity-0 transition-opacity duration-400 group-hover:opacity-100" />
 
                 <div>
@@ -58,7 +64,8 @@ export default function StrategySection() {
                 <div className="mt-8 flex items-center gap-2 text-xs font-medium tracking-wider uppercase text-gold/70">
                   {s.label} <span>&rarr;</span>
                 </div>
-              </motion.div>
+                </motion.div>
+              </Link>
             </ScrollReveal>
           ))}
         </div>
