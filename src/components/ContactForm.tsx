@@ -16,18 +16,41 @@ export default function ContactForm() {
     const form = e.currentTarget;
     const data = new FormData(form);
 
+    // Fail fast with a clear reason if the access key didn't make it into
+    // the bundle (stale compile / missing env) instead of a mystery 400.
+    if (!String(data.get("access_key") ?? "")) {
+      console.error(
+        "[ContactForm] NEXT_PUBLIC_WEB3FORMS_KEY is empty in this build — form not configured. Add it to .env.local and fully restart the dev server.",
+      );
+      setStatus("error");
+      return;
+    }
+
     try {
       const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         body: data,
       });
-      if (res.ok) {
+      const result = (await res.json().catch(() => null)) as {
+        success?: boolean;
+        message?: string;
+      } | null;
+
+      if (res.ok && result?.success) {
         form.reset();
         setStatus("success");
       } else {
+        // Surface the server's actual rejection reason in the console.
+        console.error(
+          "[ContactForm] submission rejected:",
+          res.status,
+          result?.message ?? "no response body",
+          result?.success === false ? "(success:false)" : "",
+        );
         setStatus("error");
       }
-    } catch {
+    } catch (err) {
+      console.error("[ContactForm] network failure:", err);
       setStatus("error");
     }
   };

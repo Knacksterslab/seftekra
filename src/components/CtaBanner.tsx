@@ -8,9 +8,13 @@ import ScrollReveal from "./ScrollReveal";
 export default function CtaBanner({
   heading = "Have a project? Let's build it.",
   subheading = "Whether you have a shovel-ready site, a grid connection, or an estate that needs power, Seftekra provides the capital and operational expertise.",
+  href = "/#contact",
+  ctaLabel = "Partner With Us",
 }: {
   heading?: string;
   subheading?: string;
+  href?: string;
+  ctaLabel?: string;
 }) {
   return (
     <section className="relative overflow-hidden border-t border-white/5 px-6 py-32">
@@ -24,10 +28,10 @@ export default function CtaBanner({
             {subheading}
           </p>
           <Link
-            href="/#contact"
+            href={href}
             className="inline-flex items-center gap-2 rounded-full bg-gold px-10 py-3 text-sm font-bold tracking-wide text-black transition-all hover:scale-[1.02] hover:bg-white"
           >
-            Partner With Us <span>&rarr;</span>
+            {ctaLabel} <span>&rarr;</span>
           </Link>
         </ScrollReveal>
       </div>

@@ -102,6 +102,30 @@ export const PRIVACY_SECTIONS: PrivacySection[] = [
   },
   {
     number: "07",
+    title: "Cookies & Advertising Technologies",
+    paragraphs: [
+      "We use advertising and analytics technologies from third-party platforms to understand how visitors reach our website and to measure the effectiveness of our outreach. These may include:",
+    ],
+    list: [
+      {
+        label: "Meta Pixel (Facebook/Instagram):",
+        text: "Helps us measure actions taken after clicking our ads, such as submitting an assessment request.",
+      },
+      {
+        label: "Google (gtag / Google Ads):",
+        text: "Collects visit and conversion data used to report on and optimize our advertising.",
+      },
+      {
+        label: "TikTok Pixel:",
+        text: "Performs the same measurement function for our TikTok advertising.",
+      },
+      {
+        text: "These technologies may collect your IP address, device and browser information, and interaction events (such as page views and form submissions). We do not sell this information, and you can opt out through your browser's cookie settings or each platform's own ad preferences tools.",
+      },
+    ],
+  },
+  {
+    number: "08",
     title: "Contact Us",
     paragraphs: [
       "If you have any questions, concerns, or requests regarding this Privacy Policy or your personal data, please contact our compliance team:",

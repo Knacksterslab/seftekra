@@ -3,6 +3,7 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import CapabilitiesSection from "@/components/CapabilitiesSection";
 import StrategySection from "@/components/StrategySection";
+import HomeProductBand from "@/components/HomeProductBand";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 import JsonLd from "@/components/JsonLd";
@@ -29,6 +30,7 @@ export default function Home() {
       <Hero />
       <CapabilitiesSection />
       <StrategySection />
+      <HomeProductBand />
       <ContactForm />
       <Footer />
     </>

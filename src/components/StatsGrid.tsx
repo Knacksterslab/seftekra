@@ -6,6 +6,7 @@ import ScrollReveal from "./ScrollReveal";
  */
 export default function StatsGrid({
   stats,
+  footnote = "Indicative ranges. Actual figures depend on site, load profile, and structure — confirmed during feasibility.",
 }: {
   stats: {
     capacity: string;
@@ -13,6 +14,7 @@ export default function StatsGrid({
     timeline: string;
     lifecycle: string;
   };
+  footnote?: string;
 }) {
   const items = [
     { label: "Capacity", value: stats.capacity },
@@ -38,8 +40,7 @@ export default function StatsGrid({
         ))}
       </div>
       <p className="mx-auto mt-10 max-w-xl text-center text-xs font-light text-gray-600">
-        Indicative ranges. Actual figures depend on site, load profile, and
-        structure — confirmed during feasibility.
+        {footnote}
       </p>
     </section>
   );

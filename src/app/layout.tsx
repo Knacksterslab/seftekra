@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
 import JsonLd from "@/components/JsonLd";
+import Analytics from "@/components/Analytics";
 import { SITE, WEBSITE_SCHEMA } from "@/lib/seo";
 import "./globals.css";
 
@@ -80,6 +81,7 @@ export default function RootLayout({
       <body className="min-h-full bg-midnight text-white">
         <JsonLd data={WEBSITE_SCHEMA as unknown as Record<string, unknown>} />
         {children}
+        <Analytics />
       </body>
     </html>
   );

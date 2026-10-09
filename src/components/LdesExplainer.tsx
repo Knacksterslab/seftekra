@@ -78,7 +78,7 @@ export default function LdesExplainer() {
                 Conventional
               </span>
               <span className="font-display text-sm font-medium text-gray-500">
-                Lithium-Ion
+                NMC Li-Ion
               </span>
             </div>
           </div>

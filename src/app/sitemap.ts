@@ -57,6 +57,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     ...storagePages,
     {
+      url: `${SITE.url}/seftekra-home`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
       url: `${SITE.url}/privacy`,
       lastModified,
       changeFrequency: "yearly",

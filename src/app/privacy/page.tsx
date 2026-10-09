@@ -27,7 +27,7 @@ export default function PrivacyPage() {
             Privacy <span className="font-bold text-gold">Policy</span>
           </h1>
           <p className="text-sm font-light text-gray-500">
-            Last Updated: July 16, 2026
+            Last Updated: October 9, 2026
           </p>
         </div>
       </header>

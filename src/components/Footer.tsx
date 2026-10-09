@@ -7,6 +7,12 @@ export default function Footer() {
         <div className="text-xs font-light text-gray-600">
           Seftekra Energy &copy; {new Date().getFullYear()}
         </div>
+        <a
+          href="mailto:connect@seftekra.com"
+          className="text-xs font-light text-gray-500 transition-colors hover:text-gold"
+        >
+          connect@seftekra.com
+        </a>
         <div className="flex gap-6">
           {FOOTER_LINKS.map((link) => (
             <a
