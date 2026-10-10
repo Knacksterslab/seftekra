@@ -1,9 +1,9 @@
-export const NAV_LINKS = [
+export const NAV_LINKS: { label: string; href: string; accent?: boolean }[] = [
   { label: "Solutions", href: "/solutions" },
   { label: "Financing", href: "/financing" },
   { label: "Storage", href: "/storage" },
-  { label: "Seftekra Home", href: "/seftekra-home" },
-] as const;
+  { label: "Seftekra Home", href: "/seftekra-home", accent: true },
+];
 
 export const CAPABILITIES = [
   {

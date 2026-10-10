@@ -23,7 +23,11 @@ export default function Navbar() {
             <Link
               key={link.href}
               href={link.href}
-              className="text-sm font-light text-gray-400 transition-colors hover:text-white"
+              className={
+                link.accent
+                  ? "text-sm font-medium text-gold transition-colors hover:text-white"
+                  : "text-sm font-light text-gray-400 transition-colors hover:text-white"
+              }
             >
               {link.label}
             </Link>
@@ -75,7 +79,11 @@ export default function Navbar() {
                   key={link.href}
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className="text-sm font-light text-gray-400 transition-colors hover:text-white"
+                  className={
+                    link.accent
+                      ? "text-sm font-medium text-gold transition-colors hover:text-white"
+                      : "text-sm font-light text-gray-400 transition-colors hover:text-white"
+                  }
                 >
                   {link.label}
                 </Link>
